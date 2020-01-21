@@ -1,5 +1,8 @@
 - hosts: localhost
   become: true
-  tasks:
-  - name: Install htop
-    package: name=htop state=latest
+  pre_tasks:
+    - name: Update dnf repository
+      dnf: update_cache=yes
+      changed_when: False
+  roles:
+    - utility

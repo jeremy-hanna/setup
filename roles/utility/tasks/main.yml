@@ -1,2 +1,4 @@
 # Install xclip, dnf auto-update, redshift
 ---
+- name: Install htop
+  package: name=htop state=latest
