@@ -5,4 +5,14 @@
       dnf: update_cache=yes
       changed_when: False
   roles:
+    - trackpad
+    - dotfiles
+    - dev
     - utility
+    - i3wm
+    - urxvt
+    - keyboard
+    - zsh
+    - vim
+    - firefox
+    - flathub

@@ -1,4 +1,12 @@
-# Install xclip, dnf auto-update, redshift
+# Install htop, xclip, dnf auto-update, redshift
 ---
-- name: Install htop
-  package: name=htop state=latest
+- name: Install packages
+  package: name={{ item }} state=latest
+  with_itms:
+    - htop
+    - xclip
+    - redshift
+
+- name: Link redshift config
+
+- name: Set dnf auto-updates on

@@ -1,2 +1,13 @@
 # Clone the dotfiles, install stow, let subsequent roles link them
 ---
+- name: Clone dotfile repo locally
+  git:
+    repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
+    dest: "~/Document/dotfiles"
+    version: "fedora-environment"
+    accept_hostkey: false
+  become: false
+
+- name: Ensure all configured dotfiles are stow links
+- name: Ensure dotfiles aren't dirty
+- name: Install GNU Stow
