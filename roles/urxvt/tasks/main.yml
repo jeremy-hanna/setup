@@ -1,2 +1,22 @@
 # install urxvt-unicode-256color, link .Xdefaults, wget Monoid font
 ---
+- name: Install rxvt 256color
+  become: true
+  package: name={{ item }} state=present
+  with_items:
+    - rxvt-unicode-256color
+
+- name: Link Monoid font
+  shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/.local/share/{{ item }}"
+  with_items:
+    - fonts
+
+- name: Bust font cache
+  become: false
+  shell: fc-cache -f -v
+
+- name: Link .Xresources
+  become: false
+  shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/{{ item }}"
+  with_items:
+    - .Xresources

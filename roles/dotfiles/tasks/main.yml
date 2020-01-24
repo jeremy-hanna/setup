@@ -7,14 +7,13 @@
     - git
     - stow
 
+# Checks `git status --porcelain` to avoid overwritting uncommited changes
 - name: Clone dotfile repo locally
   git:
     repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
-    dest: "/home/{{ user }}/Documents/dotfiles"
+    dest: {{ dotfile_dir }}
     version: "fedora-environment"
     accept_hostkey: false
   become: false
 
   #- name: Check if dotfiles are stow links to this directory already
-
-  #- name: Ensure dotfiles aren't dirty

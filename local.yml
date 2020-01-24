@@ -1,11 +1,11 @@
 - hosts: localhost
-  become: true
   pre_tasks:
     - name: Update dnf repository
       dnf: update_cache=yes
-      changed_when: False
+      changed_when: false
   vars:
     user: "jhanna"
+    dotfile_dir: "~/Documents/dotfiles"
   roles:
     - trackpad
     - dotfiles
@@ -13,8 +13,8 @@
     - utility
     - i3wm
     - urxvt
-    - keyboard
     - zsh
+    - keyboard
     - vim
     - firefox
     - flathub

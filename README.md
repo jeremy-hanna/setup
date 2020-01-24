@@ -47,6 +47,9 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 [VLC](),
 
 
+# Notes:
+- ansible git module checks for `git status --porcelain` and doesn't pull otherwise avoiding un-merged changes
+
 # References
 https://opensource.com/article/18/3/manage-workstation-ansible
 https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2
