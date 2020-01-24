@@ -15,13 +15,12 @@
     - fonts
 
 - name: Bust font cache
-  become: false
   shell: fc-cache -f -v
 
 - name: Link .Xresources
-  become: false
-  shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/{{ item }}"
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}/"
+    dest: "~/{{ item }}"
+    state: link
   with_items:
     - .Xresources
-  args:
-    creates: "~/{{ item }}"
