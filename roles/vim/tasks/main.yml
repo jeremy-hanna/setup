@@ -22,4 +22,4 @@
 
 # silent installation, see: https://github.com/junegunn/vim-plug/issues/730
 - name: install plugins with vim-plug
-	shell: vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
+  shell: vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
