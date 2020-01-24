@@ -1,2 +1,25 @@
 # Install vim, link dotfiles, install plugin deps (ctag + go + js), vim-plug install
 ---
+- name: Enable Fedora Copr for universal-ctags
+  become: true
+  command: "dnf copr enable -y thindil/universal-ctags"
+  creates: /etc/yum.repos.d/_copr_thindil-universal_ctags.repo
+
+- name: Install latest vim and ctags
+  become: true
+  package: name={{ item }} state=present
+  with_items:
+    - vim-enhanced
+    - universal-ctags
+
+- name: Link Vim configs
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}/"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .vim
+
+# silent installation, see: https://github.com/junegunn/vim-plug/issues/730
+- name: install plugins with vim-plug
+	shell: vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
