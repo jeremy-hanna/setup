@@ -8,7 +8,8 @@
 
 # Check if .zplug folder is exist.
 - name: "Check if .zplug folder exist."
-  stat: path={{zplug_zshrc_path}}
+  stat:
+    path: ~/.zplug
   register: zplug_folder
 
 - name: Install ZPlug if it doesn't exist
@@ -17,7 +18,7 @@
 
 - name: Link ZSH configs
   file:
-    src: "{{ dotfile_dir }}/{{ item }}/"
+    src: "{{ dotfile_dir }}/{{ item }}"
     dest: "~/{{ item }}"
     state: link
   with_items:

@@ -2,8 +2,9 @@
 ---
 - name: Enable Fedora Copr for universal-ctags
   become: true
-  command: "dnf copr enable -y thindil/universal-ctags"
-  creates: /etc/yum.repos.d/_copr_thindil-universal_ctags.repo
+  command:
+    cmd: "dnf copr enable -y thindil/universal-ctags"
+    creates: /etc/yum.repos.d/_copr_thindil-universal_ctags.repo
 
 - name: Install latest vim and ctags
   become: true
