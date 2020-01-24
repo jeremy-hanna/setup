@@ -10,6 +10,8 @@
   shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/.local/share/{{ item }}"
   with_items:
     - fonts
+  args:
+    creates: "~/.local/share/{{ item }}"
 
 - name: Bust font cache
   become: false
@@ -20,3 +22,5 @@
   shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/{{ item }}"
   with_items:
     - .Xresources
+  args:
+    creates: "~/{{ item }}"

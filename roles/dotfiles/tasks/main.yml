@@ -11,7 +11,7 @@
 - name: Clone dotfile repo locally
   git:
     repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
-    dest: {{ dotfile_dir }}
+    dest: "{{ dotfile_dir }}"
     version: "fedora-environment"
     accept_hostkey: false
   become: false
