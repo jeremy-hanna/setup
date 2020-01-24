@@ -9,5 +9,7 @@
   become: false
 
 - name: Ensure all configured dotfiles are stow links
+
 - name: Ensure dotfiles aren't dirty
+
 - name: Install GNU Stow
