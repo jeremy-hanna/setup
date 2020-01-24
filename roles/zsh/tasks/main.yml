@@ -1,2 +1,28 @@
 # Install zsh, zplug, symlink .zshrc, zplug install, default shell
 ---
+- name: Install ZSH
+  become: true
+  package: name={{ item }} state=present
+  with_items:
+    - zsh
+
+# Check if .zplug folder is exist.
+- name: "Check if .zplug folder exist."
+  stat: path={{zplug_zshrc_path}}
+  register: zplug_folder
+
+- name: Install ZPlug if it doesn't exist
+  command: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  when: zplug_folder.stat.exists == false
+
+- name: Link ZSH configs
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}/"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .zshrc
+
+# TODO: add a conditional for this on timestamp w/ zshrc
+- name: ZPlug install zsh packages
+  command: zplug install
