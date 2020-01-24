@@ -1,6 +1,6 @@
 # Clone the dotfiles, install stow, let subsequent roles link them
 ---
-- name: Install GNU stow
+- name: Install git and GNU stow
   become: true
   package: name={{ item }} state=present
   with_items:
