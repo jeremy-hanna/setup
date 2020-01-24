@@ -8,8 +8,9 @@
     accept_hostkey: false
   become: false
 
-- name: Ensure all configured dotfiles are stow links
 
-- name: Ensure dotfiles aren't dirty
+  #- name: Check if dotfiles are stow links to this directory already
 
-- name: Install GNU Stow
+  #- name: Ensure dotfiles aren't dirty
+
+  #- name: Install GNU Stow
