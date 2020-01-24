@@ -1,5 +1,12 @@
 # Clone the dotfiles, install stow, let subsequent roles link them
 ---
+- name: Install GNU stow
+  become: true
+  package: name={{ item }} state=present
+  with_items:
+    - git
+    - stow
+
 - name: Clone dotfile repo locally
   git:
     repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
@@ -8,9 +15,6 @@
     accept_hostkey: false
   become: false
 
-
   #- name: Check if dotfiles are stow links to this directory already
 
   #- name: Ensure dotfiles aren't dirty
-
-  #- name: Install GNU Stow
