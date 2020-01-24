@@ -7,7 +7,7 @@
     - rxvt-unicode-256color
 
 - name: Link Monoid font
-  shell: ln -s "{{ dotfile_dir }}/{{ item }}" "~/.local/share/{{ item }}"
+  shell: ln -s "{{ dotfile_dir }}/{{ item }}/" "~/.local/share/{{ item }}"
   with_items:
     - fonts
   args:
