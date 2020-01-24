@@ -7,11 +7,12 @@
     - rxvt-unicode-256color
 
 - name: Link Monoid font
-  shell: ln -s "{{ dotfile_dir }}/{{ item }}/" "~/.local/share/{{ item }}"
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}/"
+    dest: "~/.local/share/{{ item }}"
+    state: link
   with_items:
     - fonts
-  args:
-    creates: "~/.local/share/{{ item }}"
 
 - name: Bust font cache
   become: false
