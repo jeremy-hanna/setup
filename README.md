@@ -49,6 +49,12 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 
 # Notes:
 - ansible git module checks for `git status --porcelain` and doesn't pull otherwise avoiding un-merged changes
+- COPR dnf enabled for things like universal-ctags in the role they're installed in
+
+# TODO:
+- [ ] migrate dotfiles to use GNU Stow and update this
+- [ ] timestamp install things like vim-plug or zplug for dotfile changes
+- [ ] use better things than hacky shell commands
 
 # References
 https://opensource.com/article/18/3/manage-workstation-ansible
