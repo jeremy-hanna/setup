@@ -2,7 +2,7 @@
 ---
 - name: Install packages
   package: name={{ item }} state=present
-  with_itms:
+  with_items:
     - htop
     - xclip
     - redshift
