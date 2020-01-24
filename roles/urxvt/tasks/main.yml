@@ -19,7 +19,7 @@
 
 - name: Link .Xresources
   file:
-    src: "{{ dotfile_dir }}/{{ item }}/"
+    src: "{{ dotfile_dir }}/{{ item }}"
     dest: "~/{{ item }}"
     state: link
   with_items:
