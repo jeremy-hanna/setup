@@ -1,6 +1,7 @@
 # Install htop, xclip, dnf auto-update, redshift
 ---
 - name: Install packages
+  become: true
   package: name={{ item }} state=present
   with_items:
     - htop
