@@ -12,7 +12,6 @@
   gem:
     name: bundler
     state: latest
-    user_install: no
 
 # Build chruby from source when I need to support other builds
 # tar + [`sudo sh -c scripts/setup.sh`](https://github.com/postmodern/chruby#setupsh)
