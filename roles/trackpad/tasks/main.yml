@@ -1,6 +1,7 @@
 # add config to X11/xorg.conf.d
 ---
 - name: Add trackpad configs to X11/xorg.conf.d
+  become: true
   copy:
     content: |
       Section "InputClass"
