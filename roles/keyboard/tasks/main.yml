@@ -1,2 +1,9 @@
 # Install caps2esc, compile it, link .Xmodmap
 ---
+- name: Link Xmodmap configs
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .Xmodmap
