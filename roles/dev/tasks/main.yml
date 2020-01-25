@@ -1,17 +1,11 @@
 # install languages (go + js + ruby), subsequent pkg managers, virtual environments (docker + libvert)
 ---
-- name: Enable Fedora Copr for chruby
-  become: true
-  command:
-    cmd: "dnf copr enable -y postmodern/chruby"
-    creates: /etc/yum.repos.d/_copr_postmodern-chruby.repo
-
 - name: Install packages
   become: true
   package: name={{ item }} state=present
   with_items:
-    - chruby
     - golang
+    - make
     - ruby-2.6.3
 
 - name: Install bundler globally
@@ -19,3 +13,6 @@
     name: bundler
     state: latest
     user_install: no
+
+# Build chruby from source when I need to support other builds
+# tar + [`sudo sh -c scripts/setup.sh`](https://github.com/postmodern/chruby#setupsh)
