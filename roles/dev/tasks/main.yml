@@ -15,5 +15,7 @@
     - ruby-2.6.3
 
 - name: Install bundler globally
-  gem: name=bundler state=latest
-  user_install: no
+  gem:
+    name: bundler
+    state: latest
+    user_install: no
