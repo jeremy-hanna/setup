@@ -1,7 +1,7 @@
 # Setup
 Workstation configuration for a Fedora OS install using `ansible-pull`
 
-**WARNING: This is a _destructive_ action**
+**WARNING:** This is a **_destructive_** action
 
 # Use
 
@@ -24,16 +24,18 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 
 
 **Packages**
-[chruby](https://copr.fedorainfracloud.org/coprs/postmodern/chruby/),
 [ruby](https://www.ruby-lang.org/en/documentation/installation/#yum),
-[vim](),
-[ctags](),
+[vim + vim-plug](),
+[ctags](https://docs.ctags.io/en/latest/),
 [i3](https://fedoramagazine.org/getting-started-i3-window-manager/),
+[golang](https://developer.fedoraproject.org/tech/languages/go/go-installation.html#go-installation),
+[zsh + zplug](),
+[uxrvt](),
 
 
-**Clang**
+**Compiled**
 [caps2esc](https://gitlab.com/interception/linux/plugins/caps2esc),
-[golang](https://golang.org/doc/install#tarball),
+[chruby](https://github.com/postmodern/chruby#setupsh),
 
 
 **Settings**
@@ -52,12 +54,22 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - COPR dnf enabled for things like universal-ctags in the role they're installed in
 
 # TODO:
-- [ ] migrate dotfiles to use GNU Stow and update this
-- [ ] timestamp install things like vim-plug or zplug for dotfile changes
-- [ ] use better things than hacky shell commands
-- [ ] get compliant with ansible-lint
-- [ ] Remove unnecessary applications on fedora
+## MVP
+- [ ] caps2esc build step
+- [ ] add applications (dropbox, spotify, etc.)
 - [ ] figure out how to configure markdown notes between machines
+
+## Bugs
+- [ ] hardware related things (HDMI display, speakers, etc.)
+- [ ] reload .Xmodmap key bindings /dev/input
+
+## Nice-to-haves
+- [ ] improve theme https://github.com/sindresorhus/pure
+- [ ] timestamp install things like vim-plug or zplug for dotfile changes
+- [ ] Remove unnecessary applications on fedora
+- [ ] use better things than hacky shell commands
+- [ ] migrate dotfiles to use GNU Stow and update this
+- [ ] get compliant with ansible-lint
 
 # References
 https://opensource.com/article/18/3/manage-workstation-ansible
