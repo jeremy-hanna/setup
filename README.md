@@ -70,6 +70,7 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - [ ] use better things than hacky shell commands
 - [ ] migrate dotfiles to use GNU Stow and update this
 - [ ] get compliant with ansible-lint
+- [ ] merge OS X playbook into this same repo but switch on OS
 
 # References
 https://opensource.com/article/18/3/manage-workstation-ansible
