@@ -1,5 +1,9 @@
 # Install vim, link dotfiles, install plugin deps (ctag + go + js), vim-plug install
 ---
+- name: Uninstall OS ctags
+  become: true
+  package: name=ctags state=absent
+
 - name: Enable Fedora Copr for universal-ctags
   become: true
   command:
