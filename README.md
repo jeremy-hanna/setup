@@ -10,7 +10,7 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 
 ```
   sudo dnf install ansible
-  ansible-pull -U git@github.com:jeremy-hanna/setup.git
+  ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
 ```
 
 # Install list
@@ -37,7 +37,7 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 
 
 **Settings**
-[Trackpad tap click](),
+[Trackpad tap click](https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/),
 [Sleep power fix](),
 
 
@@ -55,6 +55,9 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - [ ] migrate dotfiles to use GNU Stow and update this
 - [ ] timestamp install things like vim-plug or zplug for dotfile changes
 - [ ] use better things than hacky shell commands
+- [ ] get compliant with ansible-lint
+- [ ] Remove unnecessary applications on fedora
+- [ ] figure out how to configure markdown notes between machines
 
 # References
 https://opensource.com/article/18/3/manage-workstation-ansible

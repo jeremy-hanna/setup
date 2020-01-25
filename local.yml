@@ -18,3 +18,5 @@
     - vim
     - firefox
     - flathub
+    - check_install
+    - cleanup
