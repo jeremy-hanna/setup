@@ -16,7 +16,6 @@
   command: "git clone https://github.com/zplug/zplug ~/.zplug"
   when: zplug_folder.stat.exists == false
 
-
 - name: Link ZSH configs
   file:
     src: "{{ dotfile_dir }}/{{ item }}"
@@ -25,9 +24,6 @@
   with_items:
     - .zshrc
 
-# TODO: add a conditional for this on timestamp w/ zshrc
-- name: ZPlug install zsh packages
-  command: zplug install
-
 - name: Change default shell
+  become: yes
   user: name={{ user }} shell=/usr/bin/zsh
