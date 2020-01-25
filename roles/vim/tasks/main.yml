@@ -24,6 +24,7 @@
     state: link
   with_items:
     - .vim
+    - .vimrc
 
 # silent installation, see: https://github.com/junegunn/vim-plug/issues/730
 - name: install plugins with vim-plug
