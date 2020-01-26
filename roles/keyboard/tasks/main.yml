@@ -48,7 +48,7 @@
   become: false
 
 - name: Remove a few lines from the caps2esc source
-  command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc.c
+  command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc/caps2esc.c
 
 - name: Make build directory for caps2esc
   file:
