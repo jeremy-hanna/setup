@@ -35,7 +35,7 @@
 - name: Make install the interception tools
   make:
     target: install
-    chdir: {{ tools_dir }}/interception_tools/build
+    chdir: "{{ tools_dir }}/interception_tools/build"
   become: true
 
 - name: Clone caps2esc repo locally
@@ -58,7 +58,7 @@
 - name: Make install the caps2esc
   make:
     target: install
-    chdir: {{ tools_dir }}/caps2esc/build
+    chdir: "{{ tools_dir }}/caps2esc/build"
   become: true
 
 - name: Add caps2esc configs /etc/udevmon.yaml

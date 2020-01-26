@@ -6,6 +6,7 @@
   vars:
     user: "jhanna"
     dotfile_dir: "~/Documents/dotfiles"
+    tools_dir: "~/Development/tools"
   roles:
     - trackpad
     - dotfiles
