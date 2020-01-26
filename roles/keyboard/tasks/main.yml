@@ -28,7 +28,7 @@
 
 - name: Make build directory for interception tools
   file:
-    path: {{ tools_dir }}/interception_tools/build
+    path: "{{ tools_dir }}/interception_tools/build"
     state: directory
     mode: '0755'
 
@@ -54,7 +54,7 @@
 
 - name: Make build directory for caps2esc
   file:
-    path: {{ tools_dir }}/caps2esc/build
+    path: "{{ tools_dir }}/caps2esc/build"
     state: directory
     mode: '0755'
 
