@@ -39,9 +39,14 @@
   command: chdir={{ tools_dir }}/interception_tools/build make install
   become: true
 
+- stat:
+    path: "{{ tools_dir }}/caps2esc"
+  register: cap_repo
+
 - name: Clear local changes from caps2esc
   command: chdir={{ tools_dir }}/caps2esc git reset --hard HEAD
   become: false
+  when: cap_repo.stat.isdir is defined and cap_repo.stat.isdir
 
 - name: Clone caps2esc repo locally
   git:
