@@ -1,2 +1,15 @@
 # clean up software and build packages unneeded
 ---
+- name: Uninstall software packages
+  become: true
+  package: name={{ item }} state=absent
+  with_items:
+    - rhythmbox
+    - gnome-boxes
+    - gnome-contacts
+    - gnome-calendar
+    - gnome-weather
+    - gnome-photos
+    - gnome-logs
+    - gnome-maps
+    - cheese
