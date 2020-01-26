@@ -7,3 +7,99 @@
     state: link
   with_items:
     - .Xmodmap
+
+- name: Install build packages
+  become: true
+  package: name={{ item }} state=present
+  with_items:
+    - cmake
+    - yaml-cpp-devel
+    - libevdev-devel
+    - libudev-devel
+    - gcc-c++
+
+- name: Clone interception tools repo locally
+  git:
+    repo: "https://gitlab.com/interception/linux/tools"
+    dest: "{{ tools_dir }}/interception_tools"
+    version: "master"
+    accept_hostkey: false
+  become: false
+
+- name: Make build directory for interception tools
+  command: chdir={{ tools_dir }}/interception_tools mkdir build
+
+- name: CMake interception tools
+  command: chdir={{ tools_dir }}/interception_tools/build cmake
+
+- name: Make install the interception tools
+  make:
+    target: install
+    chdir: {{ tools_dir }}/interception_tools/build
+  become: true
+
+- name: Clone caps2esc repo locally
+  git:
+    repo: "https://gitlab.com/interception/linux/plugins/caps2esc"
+    dest: "{{ tools_dir }}/caps2esc"
+    version: "master"
+    accept_hostkey: false
+  become: false
+
+- name: Remove a few lines from the caps2esc source
+  command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc.c
+
+- name: Make build directory for caps2esc
+  command: chdir={{ tools_dir }}/caps2esc mkdir build
+
+- name: CMake caps2esc
+  command: chdir={{ tools_dir }}/caps2esc/build cmake
+
+- name: Make install the caps2esc
+  make:
+    target: install
+    chdir: {{ tools_dir }}/caps2esc/build
+  become: true
+
+- name: Add caps2esc configs /etc/udevmon.yaml
+  copy:
+    content: |
+      - JOB: "Intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+        DEVICE:
+          EVENTS:
+            EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    dest: /etc/udevmon.yaml
+  become: true
+
+# see: https://askubuntu.com/questions/979359/how-do-i-install-caps2esc/979606#979606
+- name: Add interception systemd config to /etc/systemd/system
+  copy:
+    content: |
+      [Unit]
+      Description=udevmon
+      Wants=systemd-udev-settle.service
+      After=systemd-udev-settle.service
+
+      [Service]
+      ExecStart=/usr/bin/nice -n -20 /usr/bin/udevmon -c /etc/udevmon.yaml
+
+      [Install]
+      WantedBy=multi-user.target
+    dest: /etc/systemd/system/udevmon.service
+  become: true
+
+- name: Starting interception udevmon
+  service:
+    name: udevmon
+    state: started
+  become: true
+
+- name: Uninstall build packages
+  become: true
+  package: name={{ item }} state=absent
+  with_items:
+    - cmake
+    - yaml-cpp-devel
+    - libevdev-devel
+    - libudev-devel
+    - gcc-c++
