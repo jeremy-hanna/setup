@@ -27,7 +27,10 @@
   become: false
 
 - name: Make build directory for interception tools
-  command: chdir={{ tools_dir }}/interception_tools mkdir build
+  file:
+    path: {{ tools_dir }}/interception_tools/build
+    state: directory
+    mode: '0755'
 
 - name: CMake interception tools
   command: chdir={{ tools_dir }}/interception_tools/build cmake ..
@@ -50,7 +53,10 @@
   command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc.c
 
 - name: Make build directory for caps2esc
-  command: chdir={{ tools_dir }}/caps2esc mkdir build
+  file:
+    path: {{ tools_dir }}/caps2esc/build
+    state: directory
+    mode: '0755'
 
 - name: CMake caps2esc
   command: chdir={{ tools_dir }}/caps2esc/build cmake ..

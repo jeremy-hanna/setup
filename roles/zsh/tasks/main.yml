@@ -6,15 +6,12 @@
   with_items:
     - zsh
 
-# Check if .zplug folder is exist.
-- name: "Check if .zplug folder exist."
-  stat:
-    path: ~/.zplug
-  register: zplug_folder
-
 - name: Install ZPlug if it doesn't exist
-  command: "git clone https://github.com/zplug/zplug ~/.zplug"
-  when: zplug_folder.stat.exists == false
+  git:
+    repo: "https://github.com/zplug/zplug"
+    dest: "~/.zplug"
+    version: "master"
+    accept_hostkey: false
 
 - name: Link ZSH configs
   file:
