@@ -39,6 +39,10 @@
   command: chdir={{ tools_dir }}/interception_tools/build make install
   become: true
 
+- name: Clear local changes from caps2esc
+  command: chdir={{ tools_dir }}/caps2esc git reset --hard HEAD
+  become: false
+
 - name: Clone caps2esc repo locally
   git:
     repo: "https://gitlab.com/interception/linux/plugins/caps2esc"
