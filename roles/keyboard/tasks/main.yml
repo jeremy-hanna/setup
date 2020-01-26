@@ -30,7 +30,7 @@
   command: chdir={{ tools_dir }}/interception_tools mkdir build
 
 - name: CMake interception tools
-  command: chdir={{ tools_dir }}/interception_tools/build cmake
+  command: chdir={{ tools_dir }}/interception_tools/build cmake ..
 
 - name: Make install the interception tools
   make:
@@ -53,7 +53,7 @@
   command: chdir={{ tools_dir }}/caps2esc mkdir build
 
 - name: CMake caps2esc
-  command: chdir={{ tools_dir }}/caps2esc/build cmake
+  command: chdir={{ tools_dir }}/caps2esc/build cmake ..
 
 - name: Make install the caps2esc
   make:
