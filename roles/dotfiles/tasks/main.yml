@@ -12,7 +12,7 @@
   git:
     repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
     dest: "{{ dotfile_dir }}"
-    version: "fedora-environment"
+    version: "master"
     accept_hostkey: false
   become: false
 
