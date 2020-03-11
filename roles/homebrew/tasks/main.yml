@@ -1,0 +1,51 @@
+# Install all the brew managed packaged for the mac workstation
+---
+- name: Ensuring Homebrew Is Installed
+  stat:
+    path: /usr/local/bin/brew
+  register: homebrew_check
+
+- name: Installing Homebrew if missing
+  shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  when:
+    - not homebrew_check.stat.exists
+
+- name: Updating Homebrew
+  homebrew:
+    update_homebrew: true
+
+- name: Install Homebrew packages
+  homebrew: name={{ item }} state=present
+  with_items:
+    - autoconf
+    - bash-completion
+    - chruby
+    - ctags
+    - fd
+    - gettext
+    - git
+    - gpg
+    - go
+    - htop
+    - httpie
+    - iperf
+    - jq
+    - libdvdcss
+    - libevent
+    - mas
+    - mcrypt
+    - mysql
+    - ncdu
+    - nmap
+    - openssl
+    - pv
+    - python
+    - readline
+    - reattach-to-user-namespace
+    - sqlite
+    - ssh-copy-id
+    - tldr
+    - tmux
+    - tmate
+    - wget
+    - zsh

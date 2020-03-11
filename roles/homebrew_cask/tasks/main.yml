@@ -1,0 +1,32 @@
+# install all the apps from homebrew casks
+---
+- name: Install brew cask apps
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: 'appdir=/Applications'
+  with_items:
+    - android-file-transfer
+    - boostnote
+    - caffeine
+    - docker
+    - dropbox
+    - fing
+    - flux
+    - firefox
+    - google-chrome
+    - iterm2
+    - karabiner-elements
+    - kindlegen
+    - licecap
+    - limechat
+    - yujitach-menumeters # Note: Using forked version for 10.11+ support
+    - nvalt
+    - skitch
+    - slack
+    - spotify
+    - transmission
+    - tunnelblick
+    - vagrant
+    - virtualbox
+    - vlc
