@@ -1,5 +1,5 @@
 # Setup
-Workstation configuration for a Fedora OS install using `ansible-pull`
+Workstation configuration for a Fedora or Mac OS install using `ansible-pull`
 
 **WARNING:** This is a **_destructive_** action
 
@@ -8,8 +8,17 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
   1. Setup an ssh key and add to your github repo (or fork and use HTTPS).
   2. Install ansible and pull the playbook from the repo
 
+__Linux__:
 ```
   sudo dnf install ansible
+  ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
+```
+
+__Mac OS X__:
+```
+  xcode-select --install
+  sudo easy_install pip
+  sudo pip install ansible
   ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
 ```
 
@@ -73,5 +82,6 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - [ ] merge OS X playbook into this same repo but [switch on OS](https://unix.stackexchange.com/questions/6345/how-can-i-get-distribution-name-and-version-number-in-a-simple-shell-script)
 
 # References
-https://opensource.com/article/18/3/manage-workstation-ansible
-https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2
+https://opensource.com/article/18/3/manage-workstation-ansible  
+https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2  
+https://snow-dev.com/posts/next-level-dotfiles-with-ansible.html  
