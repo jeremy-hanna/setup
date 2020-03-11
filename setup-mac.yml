@@ -1,8 +1,11 @@
 - name: Configure OS X default plist settings
-  include_role: osx_defaults
+  include_role:
+    name: osx_defaults
 
 - name: Install Homebrew packages
-  include_role: homebrew
+  include_role:
+    name: homebrew
 
 - name: Install Homebrew Cask applications
-  include_role: homebrew_cask
+  include_role:
+    name: homebrew_cask

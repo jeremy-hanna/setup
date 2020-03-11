@@ -1,7 +1,20 @@
-- include_role: trackpad
+- name: Install dev needs
+  include_role: dev
 
-- include_role: i3wm
+- name: Install utility packages
+  include_role: utility
 
-- include_role: urxvt
+- name: Install trackpad improvements and settings
+  include_role: trackpad
 
-- include_role: flathub
+- name: Install keyboard tweaks and settings
+  include_role: keyboard
+
+- name: Install and configure window manager
+  include_role: i3wm
+
+- name: Install and configure terminal
+  include_role: urxvt
+
+- name: Install linux stand-alone applications
+  include_role: flathub

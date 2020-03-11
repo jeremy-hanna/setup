@@ -17,8 +17,8 @@ __Linux__:
 __Mac OS X__:
 ```
   xcode-select --install
-  sudo easy_install pip
-  sudo pip install ansible
+  /usr/local/bin/pip3 install ansible
+  export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin
   ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
 ```
 
@@ -71,6 +71,11 @@ __Mac OS X__:
 ## Bugs
 - [ ] hardware related things (HDMI display, speakers, etc.)
 - [ ] reload .Xmodmap key bindings /dev/input
+
+## Mac bugs
+- [ ] use package install instead of homebrew module
+- [ ] `~/.vim` folder exists always and needs to be linked in a better way
+- [ ] Karabiner access
 
 ## Nice-to-haves
 - [x] improve theme https://github.com/sindresorhus/pure

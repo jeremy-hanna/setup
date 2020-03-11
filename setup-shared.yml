@@ -1,13 +1,15 @@
-- include_role: dotfiles
+- name: Clone dotfiles repo
+  include_role:
+    name: dotfiles
 
-- include_role: dev
+- name: Install ZSH and configure
+  include_role:
+    name: zsh
 
-- include_role: utility
+- name: Install vim and configure
+  include_role:
+    name: vim
 
-- include_role: zsh
-
-- include_role: keyboard
-
-- include_role: vim
-
-- include_role: firefox
+- name: Install firefox and configure
+  include_role:
+    name: firefox

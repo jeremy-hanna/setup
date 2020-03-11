@@ -12,7 +12,7 @@
     key: SoftwareUpdate
     type: bool
     value: true
-  become: no
+  become: yes
 
 ###############################################################################
 # Screen                                                                      #
@@ -55,8 +55,8 @@
 - osx_defaults:
     domain: com.apple.dock
     key: tilesize
-    type: int
-    value: 30
+    type: float
+    value: 30.0
   become: no
 
 - osx_defaults:

@@ -5,6 +5,7 @@
     name: "{{ item }}"
     state: present
     install_options: 'appdir=/Applications'
+  ignore_errors: yes
   with_items:
     - android-file-transfer
     - boostnote
@@ -19,8 +20,7 @@
     - karabiner-elements
     - kindlegen
     - licecap
-    - limechat
-    - yujitach-menumeters # Note: Using forked version for 10.11+ support
+    - menumeters
     - nvalt
     - skitch
     - slack
