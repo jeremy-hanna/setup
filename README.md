@@ -75,7 +75,9 @@ __Mac OS X__:
 ## Mac bugs
 - [ ] use package install instead of homebrew module
 - [ ] `~/.vim` folder exists always and needs to be linked in a better way
-- [ ] Karabiner access
+- [ ] Karabiner pieces access Documents folder
+- [ ] install fonts from dotfiles
+- [ ] change iterm2 profile loading
 
 ## Nice-to-haves
 - [x] improve theme https://github.com/sindresorhus/pure
