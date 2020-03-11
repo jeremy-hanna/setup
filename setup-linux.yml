@@ -1,0 +1,7 @@
+- include_role: trackpad
+
+- include_role: i3wm
+
+- include_role: urxvt
+
+- include_role: flathub

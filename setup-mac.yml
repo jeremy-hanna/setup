@@ -1,0 +1,5 @@
+- include_role: osx_defaults
+
+- include_role: homebrew
+
+- include_role: homebrew_cask

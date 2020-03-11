@@ -1,0 +1,13 @@
+- include_role: dotfiles
+
+- include_role: dev
+
+- include_role: utility
+
+- include_role: zsh
+
+- include_role: keyboard
+
+- include_role: vim
+
+- include_role: firefox
