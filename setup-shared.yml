@@ -1,0 +1,15 @@
+- name: Clone dotfiles repo
+  include_role:
+    name: dotfiles
+
+- name: Install ZSH and configure
+  include_role:
+    name: zsh
+
+- name: Install vim and configure
+  include_role:
+    name: vim
+
+- name: Install firefox and configure
+  include_role:
+    name: firefox

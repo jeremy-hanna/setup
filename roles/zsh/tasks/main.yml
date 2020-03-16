@@ -1,10 +1,12 @@
 # Install zsh, zplug, symlink .zshrc, zplug install, default shell
 ---
+# ZSH is the default shell in Mac post-Catalina, no need to install
 - name: Install ZSH
   become: true
   package: name={{ item }} state=present
   with_items:
     - zsh
+  when: not ansible_os_family == 'Darwin'
 
 - name: Install ZPlug if it doesn't exist
   git:
@@ -21,6 +23,8 @@
   with_items:
     - .zshrc
 
+# ZSH is the default shell in Catalina
 - name: Change default shell
   become: yes
   user: name={{ user }} shell=/usr/bin/zsh
+  when: not ansible_os_family == 'Darwin'

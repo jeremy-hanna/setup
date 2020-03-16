@@ -1,0 +1,142 @@
+# Mac has a lot of plist config "defaults" to configure
+---
+- osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: AutomaticCheckEnabled
+    type: int
+    value: 1
+  become: yes
+
+- osx_defaults:
+    domain: com.apple.universalaccess
+    key: SoftwareUpdate
+    type: bool
+    value: true
+  become: yes
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+- osx_defaults:
+    domain: com.apple.screensaver
+    key: AskForPassword
+    type: int
+    value: 1
+
+- osx_defaults:
+    domain: com.apple.screensaver
+    key: AskForPasswordDelay
+    type: int
+    value: 0
+
+- osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "~/Desktop"
+
+- osx_defaults:
+    domain: com.apple.screencapture
+    key: type
+    type: string
+    value: "png"
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleFontSmoothing
+    type: int
+    value: 2
+
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 30.0
+  become: no
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: launchanim
+    type: bool
+    value: false
+  become: no
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: expose-animation-duration
+    type: float
+    value: 0.15
+  become: no
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: autohide-time-modifier
+    type: float
+    value: 0
+  become: no
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  become: no
+
+- osx_defaults:
+    domain: com.apple.dock
+    key: showhidden
+    type: bool
+    value: true
+  become: no
+
+###############################################################################
+# Typing                                                                      #
+###############################################################################
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: bool
+    value: false
+    state: present
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: bool
+    value: false
+    state: present
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: false
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 20
+
+- osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 1
+
+###############################################################################
+# TODO: Trackpad                                                              #
+###############################################################################
+

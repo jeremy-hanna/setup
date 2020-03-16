@@ -1,5 +1,5 @@
 # Setup
-Workstation configuration for a Fedora OS install using `ansible-pull`
+Workstation configuration for a Fedora or Mac OS install using `ansible-pull`
 
 **WARNING:** This is a **_destructive_** action
 
@@ -8,8 +8,17 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
   1. Setup an ssh key and add to your github repo (or fork and use HTTPS).
   2. Install ansible and pull the playbook from the repo
 
+__Linux__:
 ```
   sudo dnf install ansible
+  ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
+```
+
+__Mac OS X__:
+```
+  xcode-select --install
+  /usr/local/bin/pip3 install ansible
+  export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin
   ansible-pull -K -U git@github.com:jeremy-hanna/setup.git
 ```
 
@@ -63,6 +72,13 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - [ ] hardware related things (HDMI display, speakers, etc.)
 - [ ] reload .Xmodmap key bindings /dev/input
 
+## Mac bugs
+- [ ] use package install instead of homebrew module
+- [ ] `~/.vim` folder exists always and needs to be linked in a better way
+- [ ] Karabiner pieces access Documents folder
+- [ ] install fonts from dotfiles
+- [ ] change iterm2 profile loading
+
 ## Nice-to-haves
 - [x] improve theme https://github.com/sindresorhus/pure
 - [ ] timestamp install things like vim-plug or zplug for dotfile changes
@@ -73,5 +89,6 @@ Workstation configuration for a Fedora OS install using `ansible-pull`
 - [ ] merge OS X playbook into this same repo but [switch on OS](https://unix.stackexchange.com/questions/6345/how-can-i-get-distribution-name-and-version-number-in-a-simple-shell-script)
 
 # References
-https://opensource.com/article/18/3/manage-workstation-ansible
-https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2
+https://opensource.com/article/18/3/manage-workstation-ansible  
+https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2  
+https://snow-dev.com/posts/next-level-dotfiles-with-ansible.html  

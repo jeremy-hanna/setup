@@ -6,14 +6,33 @@
   with_items:
     - git
     - stow
+  when: not ansible_os_family == 'Darwin'
 
 # Checks `git status --porcelain` to avoid overwritting uncommited changes
 - name: Clone dotfile repo locally
   git:
     repo: "https://www.github.com/jeremy-hanna/dotfiles.git"
     dest: "{{ dotfile_dir }}"
-    version: "fedora-environment"
+    version: "master"
     accept_hostkey: false
   become: false
 
   #- name: Check if dotfiles are stow links to this directory already
+
+- name: Link karabiner keybindings config
+  file:
+    src: "{{ dotfile_dir }}/.config/{{ item }}"
+    dest: "~/.config/{{ item }}"
+    state: link
+  with_items:
+    - karabiner
+  when: ansible_os_family == 'Darwin'
+
+- name: Link tmux config for use in iterm
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .tmux.conf
+  when: ansible_os_family == 'Darwin'

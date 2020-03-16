@@ -1,23 +1,27 @@
+# The order is important, dotfiles cloned _after_ Mac and _before_ Linux
+# scripts because of dependencies
+---
 - hosts: localhost
   pre_tasks:
     - name: Update dnf repository
       dnf: update_cache=yes
       changed_when: false
+      when: not ansible_os_family == 'Darwin'
   vars:
     user: "jhanna"
     dotfile_dir: "~/Documents/dotfiles"
     tools_dir: "/home/jhanna/Development/tools"
-  roles:
-    - trackpad
-    - dotfiles
-    - dev
-    - utility
-    - i3wm
-    - urxvt
-    - zsh
-    - keyboard
-    - vim
-    - firefox
-    - flathub
-    - check_install
-    - cleanup
+  tasks:
+    - name: Setup mac specific roles
+      include_tasks: setup-mac.yml
+      when: ansible_os_family == 'Darwin'
+
+    - name: Setup universal roles
+      include_tasks: setup-shared.yml
+
+    - name: Setup linux specific roles
+      include_tasks: setup-linux.yml
+      when: not ansible_os_family == 'Darwin'
+
+    - name: Run post install roles
+      include_tasks: post-install.yml
