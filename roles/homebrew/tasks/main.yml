@@ -20,7 +20,7 @@
     - autoconf
     - bash-completion
     - chruby
-    - ctags
+    - "--HEAD universal-ctags/universal-ctags/universal-ctags"
     - fd
     - gettext
     - git

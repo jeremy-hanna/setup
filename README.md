@@ -73,11 +73,15 @@ __Mac OS X__:
 - [ ] reload .Xmodmap key bindings /dev/input
 
 ## Mac bugs
+- [x] ctags is not universal-ctags
+- [ ] ctags does not link from dotfiles
 - [ ] use package install instead of homebrew module
 - [ ] `~/.vim` folder exists always and needs to be linked in a better way
 - [ ] Karabiner pieces access Documents folder
 - [ ] install fonts from dotfiles
 - [ ] change iterm2 profile loading
+- [ ] add touchbar considerations to osx_defaults
+- [ ] configure workspaces and keyboard movements
 
 ## Nice-to-haves
 - [x] improve theme https://github.com/sindresorhus/pure

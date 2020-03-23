@@ -36,3 +36,11 @@
   with_items:
     - .tmux.conf
   when: ansible_os_family == 'Darwin'
+
+- name: Link ctags config for use with vim
+  file:
+    src: "{{ dotfile_dir }}/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .ctags
