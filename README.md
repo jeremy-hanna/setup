@@ -74,7 +74,9 @@ __Mac OS X__:
 
 ## Mac bugs
 - [x] ctags is not universal-ctags
-- [ ] ctags does not link from dotfiles
+- [x] ctags does not link from dotfiles
+- [x] vim is not latest vim, install it with brew
+- [ ] can't link out through the /usr/bin/vim to in catalina - need alias in dotfiles
 - [ ] use package install instead of homebrew module
 - [ ] `~/.vim` folder exists always and needs to be linked in a better way
 - [ ] Karabiner pieces access Documents folder
