@@ -6,7 +6,7 @@
   with_items:
     - golang
     - make
-    - ruby-2.6.3
+    - ruby
 
 - name: Install bundler globally
   gem:
