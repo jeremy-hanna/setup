@@ -1,10 +1,10 @@
 # install urxvt-unicode-256color, link .Xdefaults, wget Monoid font
 ---
-- name: Install rxvt 256color
+- name: Install rxvt
   become: true
   package: name={{ item }} state=present
   with_items:
-    - rxvt-unicode-256color
+    - rxvt-unicode
 
 - name: Link Monoid font
   file:
