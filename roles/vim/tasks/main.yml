@@ -8,8 +8,8 @@
 - name: Enable Fedora Copr for universal-ctags
   become: true
   command:
-    cmd: "dnf copr enable -y thindil/universal-ctags"
-    creates: /etc/yum.repos.d/_copr_thindil-universal_ctags.repo
+    cmd: "dnf copr enable -y jgoguen/universal-ctags"
+    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:jgoguen:universal-ctags.repo
   when: not ansible_os_family == 'Darwin'
 
 - name: Install latest vim and ctags
