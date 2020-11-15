@@ -75,7 +75,7 @@
 - name: Add caps2esc configs /etc/udevmon.yaml
   copy:
     content: |
-      - JOB: "Intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+      - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
         DEVICE:
           EVENTS:
             EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
