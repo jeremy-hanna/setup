@@ -32,39 +32,19 @@
 - name: Make install the interception tools
   command: chdir={{ tools_dir }}/interception_tools cmake --build build
 
-- stat:
-    path: "{{ tools_dir }}/caps2esc"
-  register: cap_repo
-
-- name: Clear local changes from caps2esc
-  command: chdir={{ tools_dir }}/caps2esc git reset --hard HEAD
-  become: false
-  when: cap_repo.stat.isdir is defined and cap_repo.stat.isdir
-
 - name: Clone caps2esc repo locally
   git:
-    repo: "https://gitlab.com/interception/linux/plugins/caps2esc"
+    repo: "git@github.com:jeremy-hanna/caps2esc.git"
     dest: "{{ tools_dir }}/caps2esc"
     version: "master"
     accept_hostkey: false
   become: false
 
-  # FIXME: this has changed significantly and needs to be reworked
-  # - name: Remove a few lines from the caps2esc source
-  # command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc/caps2esc.c
-
-- name: Make build directory for caps2esc
-  file:
-    path: "{{ tools_dir }}/caps2esc/build"
-    state: directory
-    mode: '0755'
-
 - name: CMake caps2esc
-  command: chdir={{ tools_dir }}/caps2esc/build cmake ..
+  command: chdir={{ tools_dir }}/caps2esc cmake -B build -DCMAKE_BUILD_TYPE=Release
 
 - name: Make install the caps2esc
-  command: chdir={{ tools_dir }}/caps2esc/build make install
-  become: true
+  command: chdir={{ tools_dir }}/caps2esc cmake --build build
 
 - name: Add caps2esc configs /etc/udevmon.yaml
   copy:
@@ -85,9 +65,13 @@
       Description=udevmon
       Wants=systemd-udev-settle.service
       After=systemd-udev-settle.service
+      Before=plasma-workspace.target
 
       [Service]
       ExecStart=/usr/bin/nice -n -20 /usr/local/bin/udevmon -c /etc/udevmon.yaml
+      Nice=-20
+      Restart=on-failure
+      OOMScoreAdjust=-1000
 
       [Install]
       WantedBy=multi-user.target
