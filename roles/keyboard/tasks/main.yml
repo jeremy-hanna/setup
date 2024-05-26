@@ -13,10 +13,10 @@
   package: name={{ item }} state=present
   with_items:
     - cmake
-    - yaml-cpp-devel
     - libevdev-devel
-    - libudev-devel
-    - gcc-c++
+    - systemd-devel
+    - yaml-cpp-devel
+    - boost-devel
 
 - name: Clone interception tools repo locally
   git:
@@ -26,18 +26,11 @@
     accept_hostkey: false
   become: false
 
-- name: Make build directory for interception tools
-  file:
-    path: "{{ tools_dir }}/interception_tools/build"
-    state: directory
-    mode: '0755'
-
 - name: CMake interception tools
-  command: chdir={{ tools_dir }}/interception_tools/build cmake ..
+  command: chdir={{ tools_dir }}/interception_tools cmake -B build -DCMAKE_BUILD_TYPE=Release
 
 - name: Make install the interception tools
-  command: chdir={{ tools_dir }}/interception_tools/build make install
-  become: true
+  command: chdir={{ tools_dir }}/interception_tools cmake --build build
 
 - stat:
     path: "{{ tools_dir }}/caps2esc"
