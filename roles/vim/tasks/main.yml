@@ -5,30 +5,39 @@
   package: name=ctags state=absent
   when: not ansible_os_family == 'Darwin'
 
-- name: Enable Fedora Copr for universal-ctags
-  become: true
-  command:
-    cmd: "dnf copr enable -y jgoguen/universal-ctags"
-    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:jgoguen:universal-ctags.repo
-  when: not ansible_os_family == 'Darwin'
+  # FIXME: this looks to not be neeeded, is dnf install ctags the universal-ctags?
+  # - name: Enable Fedora Copr for universal-ctags
+  # become: true
+  # command:
+  # cmd: "dnf copr enable -y jgoguen/universal-ctags"
+  # creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:jgoguen:universal-ctags.repo
+  # when: not ansible_os_family == 'Darwin'
 
 - name: Install latest vim and ctags
   become: true
   package: name={{ item }} state=present
   with_items:
-    - vim-enhanced
-    - universal-ctags
+    - neovim
+    - ctags
   when: not ansible_os_family == 'Darwin'
 
-- name: Link Vim configs
+- name: Link neovim configs
+  file:
+    src: "{{ dotfile_dir }}/.config/{{ item }}"
+    dest: "~/.config/{{ item }}"
+    state: link
+  with_items:
+    - nvim
+
+- name: Link vim directory assets
   file:
     src: "{{ dotfile_dir }}/{{ item }}"
     dest: "~/{{ item }}"
     state: link
   with_items:
     - .vim
-    - .vimrc
+
 
 # silent installation, see: https://github.com/junegunn/vim-plug/issues/730
 - name: install plugins with vim-plug
-  shell: vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
+  shell: nvim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty

@@ -1,17 +1,17 @@
 # install languages (go + js + ruby), subsequent pkg managers, virtual environments (docker + libvert)
 ---
-- name: Install packages
-  become: true
-  package: name={{ item }} state=present
-  with_items:
-    - golang
-    - make
-    - ruby
+# - name: Install packages
+# become: true
+# package: name={{ item }} state=present
+# with_items:
+# - golang
+    # - make
+    # - ruby
 
-- name: Install bundler globally
-  gem:
-    name: bundler
-    state: latest
+    # - name: Install bundler globally
+    # gem:
+    # name: bundler
+    # state: latest
 
 # Build chruby from source when I need to support other builds
 # tar + [`sudo sh -c scripts/setup.sh`](https://github.com/postmodern/chruby#setupsh)

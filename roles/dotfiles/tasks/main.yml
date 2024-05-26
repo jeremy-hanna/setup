@@ -43,4 +43,4 @@
     dest: "~/{{ item }}"
     state: link
   with_items:
-    - .ctags
+    - .ctags.d

@@ -56,8 +56,9 @@
     accept_hostkey: false
   become: false
 
-- name: Remove a few lines from the caps2esc source
-  command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc/caps2esc.c
+  # FIXME: this has changed significantly and needs to be reworked
+  # - name: Remove a few lines from the caps2esc source
+  # command: sed -i -e '/input.code == KEY_ESC/,+1 d' {{ tools_dir }}/caps2esc/caps2esc.c
 
 - name: Make build directory for caps2esc
   file:
@@ -83,6 +84,7 @@
   become: true
 
 # see: https://askubuntu.com/questions/979359/how-do-i-install-caps2esc/979606#979606
+# FIXME: this should be improved, there is a lot of it not starting on system boot and failures in general - would also be nice to have a system warning when it is broken
 - name: Add interception systemd config to /etc/systemd/system
   copy:
     content: |
@@ -105,12 +107,12 @@
     state: started
   become: true
 
-- name: Uninstall build packages
-  become: true
-  package: name={{ item }} state=absent
-  with_items:
-    - cmake
-    - yaml-cpp-devel
-    - libevdev-devel
-    - libudev-devel
-    - gcc-c++
+  # - name: Uninstall build packages
+  # become: true
+  # package: name={{ item }} state=absent
+  # with_items:
+  # - cmake
+  # - yaml-cpp-devel
+  # - libevdev-devel
+    # - libudev-devel
+    # - gcc-c++

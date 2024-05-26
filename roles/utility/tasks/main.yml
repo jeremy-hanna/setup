@@ -6,7 +6,7 @@
   with_items:
     - htop
     - xclip
-    - redshift
+    # - redshift
   when: not ansible_os_family == 'Darwin'
 
       # - name: Link redshift config
