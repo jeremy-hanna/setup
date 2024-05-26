@@ -39,5 +39,6 @@
 
 
 # silent installation, see: https://github.com/junegunn/vim-plug/issues/730
-- name: install plugins with vim-plug
-  shell: nvim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
+# FIXME: this doesn't work with nvim
+#- name: install plugins with vim-plug
+#shell: nvim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty
