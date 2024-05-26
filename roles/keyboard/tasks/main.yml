@@ -32,6 +32,10 @@
 - name: Make install the interception tools
   command: chdir={{ tools_dir }}/interception_tools cmake --build build
 
+- name: Make link the interception tools
+  command: chdir={{ tools_dir }}/interception_tools/build make install
+  become: true
+
 - name: Clone caps2esc repo locally
   git:
     repo: "git@github.com:jeremy-hanna/caps2esc.git"
