@@ -1,23 +1,24 @@
 # Install i3wm + UI pkgs, copy config over, default to i3
 ---
-- name: Install i3wm ecosystem
-  become: true
-  package: name={{ item }} state=present
-  with_items:
-    - i3
-    - i3status
-    - dmenu
-    - light
-    - i3lock
-    - feh
-    - conky
-
-- name: Link i3wm configs
-  file:
-    src: "{{ dotfile_dir }}/.config/{{ item }}"
-    dest: "~/.config/{{ item }}"
-    state: link
-  with_items:
-    - i3
+# FIXME: this needs to be migrated to sway because i3 has no wayland support
+# - name: Install i3wm ecosystem
+#   become: true
+#   package: name={{ item }} state=present
+#   with_items:
+#     - i3
+#     - i3status
+#     - dmenu
+#     - light
+#     - i3lock
+#     - feh
+#     - conky
+# 
+# - name: Link i3wm configs
+#   file:
+#     src: "{{ dotfile_dir }}/.config/{{ item }}"
+#     dest: "~/.config/{{ item }}"
+#     state: link
+#   with_items:
+#     - i3
 
 # i3wm will have to be set instead of GDM at the login menu
